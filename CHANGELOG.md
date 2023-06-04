@@ -1,3 +1,4 @@
 ## 0.0.1
 
 * Initial release
+* Add `sealedTimestampConverter` by defining `SealedTimestamp` class with Dart 3 sealed class feature.
