@@ -7,7 +7,11 @@ part 'entity.g.dart';
 
 @JsonSerializable()
 class Entity {
-  Entity({required this.name, this.createdAt, this.updatedAt});
+  Entity({
+    required this.name,
+    this.createdAt = const ServerTimestamp(),
+    this.updatedAt = const ServerTimestamp(),
+  });
 
   /// Connect the generated [_$EntityFromJson] function to the `fromJson`
   /// factory.
@@ -17,10 +21,10 @@ class Entity {
   final String name;
 
   @sealedTimestampConverter
-  final DateTime? createdAt;
+  final SealedTimestamp createdAt;
 
   @alwaysUseServerTimestampSealedTimestampConverter
-  final DateTime? updatedAt;
+  final SealedTimestamp updatedAt;
 
   /// Connect the generated [_$EntityToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$EntityToJson(this);

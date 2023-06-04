@@ -11,15 +11,17 @@ part of 'entity.dart';
 Entity _$EntityFromJson(Map json) => Entity(
       name: json['name'] as String,
       createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
+          ? const ServerTimestamp()
+          : sealedTimestampConverter.fromJson(json['createdAt'] as Object),
       updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
+          ? const ServerTimestamp()
+          : alwaysUseServerTimestampSealedTimestampConverter
+              .fromJson(json['updatedAt'] as Object),
     );
 
 Map<String, dynamic> _$EntityToJson(Entity instance) => <String, dynamic>{
       'name': instance.name,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'createdAt': sealedTimestampConverter.toJson(instance.createdAt),
+      'updatedAt': alwaysUseServerTimestampSealedTimestampConverter
+          .toJson(instance.updatedAt),
     };
