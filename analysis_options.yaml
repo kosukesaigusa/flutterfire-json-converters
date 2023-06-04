@@ -10,6 +10,7 @@ analyzer:
 
 linter:
   rules:
+    avoid_print: false
     prefer_final_parameters: false
     discarded_futures: false
     combinators_ordering: false
