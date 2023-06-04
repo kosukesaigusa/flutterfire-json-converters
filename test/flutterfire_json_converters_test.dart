@@ -18,26 +18,28 @@ void main() {
     test(
         'uses client date time for createdAt and server timestamp for '
         'updatedAt', () {
-      final now = DateTime.now();
-      final entity = Entity(name: 'foo', createdAt: ClientDateTime(now));
+      final epoch = DateTime(1970);
+      final entity = Entity(name: 'foo', createdAt: ClientDateTime(epoch));
       final json = entity.toJson();
 
+      print(json['updatedAt']);
+
       expect(json['name'], 'foo');
-      expect(json['createdAt'], Timestamp.fromDate(now));
+      expect(json['createdAt'], Timestamp.fromDate(epoch));
       expect(json['updatedAt'], isA<FieldValue>());
     });
 
     test('gives client date time to updatedAt but uses server timestamp', () {
-      final now = DateTime.now();
+      final epoch = DateTime(1970);
       final entity = Entity(
         name: 'foo',
-        createdAt: ClientDateTime(now),
-        updatedAt: ClientDateTime(now),
+        createdAt: ClientDateTime(epoch),
+        updatedAt: ClientDateTime(epoch),
       );
       final json = entity.toJson();
 
       expect(json['name'], 'foo');
-      expect(json['createdAt'], Timestamp.fromDate(now));
+      expect(json['createdAt'], Timestamp.fromDate(epoch));
       expect(json['updatedAt'], isA<FieldValue>());
     });
   });
