@@ -8,4 +8,8 @@ targets:
       source_gen|combining_builder:
         options:
           ignore_for_file:
-            - "type=lint"
+            - type=lint
+            - implicit_dynamic_parameter
+            - implicit_dynamic_type
+            - implicit_dynamic_method
+            - strict_raw_type
