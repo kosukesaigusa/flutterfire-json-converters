@@ -1,5 +1,5 @@
 name: flutterfire_json_converters
-description: flutterfire_json_converters
+description: flutterfire_json_converters package supplies some useful json_converters for your FlutterFire apps.
 version: 0.0.1
 homepage: https://github.com/KosukeSaigusa/flutterfire_json_converters
 
