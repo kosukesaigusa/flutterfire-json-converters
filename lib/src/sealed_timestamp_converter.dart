@@ -13,13 +13,13 @@ class _SealedTimestampConverter
   final bool alwaysUseServerTimestamp;
 
   @override
-  SealedTimestamp fromJson(final Object json) {
+  SealedTimestamp fromJson(Object json) {
     final timestamp = json as Timestamp;
     return ClientDateTime(timestamp.toDate());
   }
 
   @override
-  Object toJson(final SealedTimestamp sealedTimestamp) {
+  Object toJson(SealedTimestamp sealedTimestamp) {
     if (alwaysUseServerTimestamp) {
       return FieldValue.serverTimestamp();
     }
