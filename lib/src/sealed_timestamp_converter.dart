@@ -1,8 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+/// A [_SealedTimestampConverter] to convert to/from Dart [DateTime] and Cloud
+/// Firestore [Timestamp].
 const sealedTimestampConverter = _SealedTimestampConverter();
 
+/// A [_SealedTimestampConverter] to always use [FieldValue.serverTimestamp]
+/// when calling toJson.
 const alwaysUseServerTimestampSealedTimestampConverter =
     _SealedTimestampConverter(alwaysUseServerTimestamp: true);
 
@@ -31,7 +35,14 @@ class _SealedTimestampConverter
   }
 }
 
+/// A sealed class to handle both Dart [DateTime] class and Cloud Firestore
+/// [Timestamp] class.
 sealed class SealedTimestamp {
+  /// Creates a [SealedTimestamp].
+  const SealedTimestamp();
+
+  /// Returns [DateTime] if this is a [ClientDateTime] instance.
+  /// If not, always returns null.
   DateTime? get dateTime {
     return switch (this) {
       ClientDateTime(clientDateTime: final clientDateTime) => clientDateTime,
@@ -40,10 +51,18 @@ sealed class SealedTimestamp {
   }
 }
 
+/// A [SealedTimestamp] extended class to represents Dart [DateTime] field.
 class ClientDateTime extends SealedTimestamp {
-  ClientDateTime(this.clientDateTime);
+  /// Creates a [ClientDateTime].
+  const ClientDateTime(this.clientDateTime);
 
+  /// Dart [DateTime] field.
   final DateTime clientDateTime;
 }
 
-class ServerTimestamp extends SealedTimestamp {}
+/// A [SealedTimestamp] extended class to automatically set Cloud Firestore
+/// [FieldValue.serverTimestamp]
+class ServerTimestamp extends SealedTimestamp {
+  /// Creates a [ServerTimestamp].
+  const ServerTimestamp();
+}
