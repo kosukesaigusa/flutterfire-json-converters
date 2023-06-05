@@ -11,19 +11,18 @@ class Entity {
     this.updatedAt = const ServerTimestamp(),
   });
 
-  /// Connect the generated [_$EntityFromJson] function to the `fromJson`
-  /// factory.
   factory Entity.fromJson(Map<String, dynamic> json) => _$EntityFromJson(json);
 
-  /// The generated code assumes these values exist in JSON.
   final String name;
 
+  // Handle both Dart's `DateTime` and Cloud Firestore's `Timestamp` types.
   @sealedTimestampConverter
   final SealedTimestamp createdAt;
 
+  // Handle both Dart's `DateTime` and Cloud Firestore's `Timestamp` types, and
+  // always use `FieldValue.serverTimestamp()` when creating/updating a document.
   @alwaysUseServerTimestampSealedTimestampConverter
   final SealedTimestamp updatedAt;
 
-  /// Connect the generated [_$EntityToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$EntityToJson(this);
 }
