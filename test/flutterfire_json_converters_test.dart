@@ -22,8 +22,6 @@ void main() {
       final entity = Entity(name: 'foo', createdAt: ClientDateTime(epoch));
       final json = entity.toJson();
 
-      print(json['updatedAt']);
-
       expect(json['name'], 'foo');
       expect(json['createdAt'], Timestamp.fromDate(epoch));
       expect(json['updatedAt'], isA<FieldValue>());
