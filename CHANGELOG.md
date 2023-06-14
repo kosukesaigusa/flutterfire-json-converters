@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Update dependency package versions.
+
 ## 0.0.2
 
 * Update README.md, pubspec.yaml homepage, and comments in source codes.
