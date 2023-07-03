@@ -1,5 +1,9 @@
 # flutterfire_json_converters
 
+[![version][version-badge]][package]
+[![MIT License][license-badge]][license]
+[![PRs Welcome][prs-badge]](https://makeapullrequest.com)
+
 flutterfire_json_converters package supplies some useful json_converters when you use [json_serializable](https://pub.dev/packages/json_serializable) or [freezed](https://pub.dev/packages/freezed) for your FlutterFire apps.
 
 ## How to use
@@ -92,3 +96,9 @@ This package is developed with reference to:
 <https://pub.dev/packages/json_converter_helper>
 
 We would like to express our gratitude for their valuable contributions.
+
+[version-badge]: https://img.shields.io/pub/v/flutterfire_json_converters.svg
+[package]: https://pub.dartlang.org/packages/flutterfire_json_converters
+[license-badge]: https://img.shields.io/github/license/KosukeSaigusa/flutterfire-json-converters.svg
+[license]: https://github.com/KosukeSaigusa/flutterfire-json-converters/blob/master/LICENSE
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
