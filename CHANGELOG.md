@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Update dependency package versions.
+
 ## 0.0.5
 
 * Update dependency package versions.
