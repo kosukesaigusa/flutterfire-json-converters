@@ -270,7 +270,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.7"
+    version: "0.0.8"
   frontend_server_client:
     dependency: transitive
     description:
